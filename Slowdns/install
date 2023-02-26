@@ -27,15 +27,15 @@ echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
 tput cnorm
 }
 clear
-echo -e "\033[1;31m════════════════════AETeam.ir═════════════════════\033[0m"
+echo -e "\033[1;31m═════════════════════AETeam.ir══════════════════════\033[0m"
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%40s%s%-12s\n' "INSTALLER SLOWDNS MANAGER" ; tput sgr0
-echo -e "\033[1;31m════════════════════AETeam.ir═════════════════════\033[0m"
+echo -e "\033[1;31m═════════════════════AETeam.ir══════════════════════\033[0m"
 echo -e ""
 echo -e "      This script will install the"
 echo -e "   manager for SlowDNS connection mode."
 echo -e ""
 echo -e "         \033[1;33mInstaller made by edition \033[1;37m"
-echo -e "\033[1;31m════════════════════AETeam.ir═════════════════════\033[0m"
+echo -e "\033[1;31m═════════════════════AETeam.ir══════════════════════\033[0m"
 echo ""
 echo -e "DOWNLOADING DEPENDENCIES..."
 echo ""
@@ -69,9 +69,9 @@ sleep 2
 }
 fun_bar 'fun_dnscf'
 clear
-echo -e "\033[1;31m════════════════════AETeam.ir═════════════════════\033[0m"
+echo -e "\033[1;31m═════════════════════AETeam.ir══════════════════════\033[0m"
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%40s%s%-12s\n' "INSTALLER SLOWDNS MANAGER" ; tput sgr0
-echo -e "\033[1;31m════════════════════AETeam.ir═════════════════════\033[0m"
+echo -e "\033[1;31m═════════════════════AETeam.ir══════════════════════\033[0m"
 echo ""
 echo -e "          \033[1;33mINSTALLATION COMPLETE!\033[0m          "
 echo ""
