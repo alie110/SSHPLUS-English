@@ -84,7 +84,7 @@ echo -e "\033[1;31m🇮🇷═════════════════�
 tput setaf 7
 tput setab 4
 tput bold
-printf '%40s%s%-12s\n' "🇮🇷WELCOME TO SSHPLUS MANAGER🇮🇷"
+printf '%40s%s%-12s\n' "              WELCOME TO SSHPLUS MANAGER              "
 tput sgr0
 echo -e "\033[1;31m🇮🇷════════════════════AETeam.ir═════════════════════🇮🇷\033[0m"
 echo ""
