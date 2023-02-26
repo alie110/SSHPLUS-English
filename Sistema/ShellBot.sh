@@ -35,7 +35,7 @@
 [[ $_SHELLBOT_SH_ ]] && return 1
 
 if ! awk 'BEGIN { exit ARGV[1] < 4.3 }' ${BASH_VERSINFO[0]}.${BASH_VERSINFO[1]}; then
-	echo "${BASH_SOURCE:-${0##*/}}: erro: requer o interpretador de comandos 'bash 4.3' ou superior." 1>&2
+	echo "${BASH_SOURCE:-${0##*/}}: erro: requires shell 'bash 4.3' or higher." 1>&2
 	exit 1
 fi
 
@@ -43,7 +43,7 @@ fi
 readonly -A _SHELLBOT_=(
 [name]='ShellBot'
 [keywords]='Shell Script Telegram API'
-[description]='API não-oficial para criação de bots na plataforma Telegram.'
+[description]='Unofficial API for creating bots on the Telegram platform.'
 [version]='6.0'
 [language]='shellscript'
 [shell]=${SHELL}
@@ -60,15 +60,15 @@ while read _pkg_ _ver_; do
 	if command -v $_pkg_ &>/dev/null; then
 		if [[ $($_pkg_ --version 2>&1) =~ [0-9]+\.[0-9]+ ]]; then
 			if ! awk 'BEGIN { exit ARGV[1] < ARGV[2] }' $BASH_REMATCH $_ver_; then
-				printf "%s: erro: requer o pacote '%s %s' ou superior.\n" ${_SHELLBOT_[name]} $_pkg_ $_ver_ 1>&2
+				printf "%s: erro: requires package '%s %s' or higher.\n" ${_SHELLBOT_[name]} $_pkg_ $_ver_ 1>&2
 				exit 1
 			fi
 		else
-			printf "%s: erro: '%s' não foi possível obter a versão.\n" ${_SHELLBOT_[name]} $_pkg_ 1>&2
+			printf "%s: erro: '%s' could not get the version.\n" ${_SHELLBOT_[name]} $_pkg_ 1>&2
 			exit 1
 		fi
 	else
-		printf "%s: erro: '%s' o pacote requerido está ausente.\n" ${_SHELLBOT_[name]} $_pkg_ 1>&2
+		printf "%s: erro: '%s' the required package is missing.\n" ${_SHELLBOT_[name]} $_pkg_ 1>&2
 		exit 1
 	fi
 done <<< "${_SHELLBOT_[packages]//,/$'\n'}"
@@ -95,28 +95,28 @@ readonly _BOT_SCRIPT_=${0##*/}				# Script
 readonly _CURL_OPT_='--silent --request'	# CURL (opções)
 
 # Erros
-readonly _ERR_TYPE_BOOL_='tipo incompatível: suporta somente "true" ou "false".'
-readonly _ERR_TYPE_INT_='tipo incompatível: suporta somente inteiro.'
-readonly _ERR_TYPE_FLOAT_='tipo incompatível: suporta somente float.'
-readonly _ERR_PARAM_REQUIRED_='opção requerida: verique se o(s) parâmetro(s) ou argumento(s) obrigatório(s) estão presente(s).'
-readonly _ERR_TOKEN_UNAUTHORIZED_='não autorizado: verifique se possui permissões para utilizar o token.'
-readonly _ERR_TOKEN_INVALID_='token inválido: verique o número do token e tente novamente.'
-readonly _ERR_BOT_ALREADY_INIT_='ação não permitida: o bot já foi inicializado.'
-readonly _ERR_FILE_NOT_FOUND_='falha ao acessar: não foi possível ler o arquivo.'
-readonly _ERR_DIR_WRITE_DENIED_='permissão negada: não é possível gravar no diretório.'
-readonly _ERR_DIR_NOT_FOUND_='Não foi possível acessar: diretório não encontrado.'
-readonly _ERR_FILE_INVALID_ID_='id inválido: arquivo não encontrado.'
-readonly _ERR_UNKNOWN_='erro desconhecido: ocorreu uma falha inesperada. Reporte o problema ao desenvolvedor.'
-readonly _ERR_SERVICE_NOT_ROOT_='acesso negado: requer privilégios de root.'
-readonly _ERR_SERVICE_EXISTS_='erro ao criar o serviço: o nome do serviço já existe.'
-readonly _ERR_SERVICE_SYSTEMD_NOT_FOUND_='erro ao ativar: o sistema não possui suporte ao gerenciamento de serviços "systemd".'
-readonly _ERR_SERVICE_USER_NOT_FOUND_='usuário não encontrado: a conta de usuário informada é inválida.'
-readonly _ERR_VAR_NAME_='variável não encontrada: o identificador é inválido ou não existe.'
-readonly _ERR_FUNCTION_NOT_FOUND_='função não encontrada: o identificador especificado é inválido ou não existe.'
-readonly _ERR_ARG_='argumento inválido: o argumento não é suportado pelo parâmetro especificado.'
-readonly _ERR_RULE_ALREADY_EXISTS_='falha ao definir: o nome da regra já existe.'
-readonly _ERR_HANDLE_EXISTS_='erro ao registar: já existe um handle vinculado ao callback'
-readonly _ERR_CONNECTION_='falha de conexão: não foi possível estabelecer conexão com o Telegram.'
+readonly _ERR_TYPE_BOOL_='type mismatch: support only "true" or "false".'
+readonly _ERR_TYPE_INT_='Type mismatch: supports integer only.'
+readonly _ERR_TYPE_FLOAT_='Type mismatch: supports float only.'
+readonly _ERR_PARAM_REQUIRED_='required option: check if required parameter(s) or argument(s) are present.'
+readonly _ERR_TOKEN_UNAUTHORIZED_='unauthorized: check if you have permissions to use the token.'
+readonly _ERR_TOKEN_INVALID_='invalid token: check the token number and try again.'
+readonly _ERR_BOT_ALREADY_INIT_='action not allowed: the bot has already been initialized.'
+readonly _ERR_FILE_NOT_FOUND_='failed to access: it was not possible to read the file.'
+readonly _ERR_DIR_WRITE_DENIED_='permission denied: it is not possible to write to the directory.'
+readonly _ERR_DIR_NOT_FOUND_='Unable to access: directory not found.'
+readonly _ERR_FILE_INVALID_ID_='invalid id: file not found.'
+readonly _ERR_UNKNOWN_='unknown error: An unexpected failure occurred. Report the problem to the developer.'
+readonly _ERR_SERVICE_NOT_ROOT_='Access denied: requires root privileges.'
+readonly _ERR_SERVICE_EXISTS_='error creating service: service name already exists.'
+readonly _ERR_SERVICE_SYSTEMD_NOT_FOUND_='error activating: the system does not support the management of "systemd" services.'
+readonly _ERR_SERVICE_USER_NOT_FOUND_='User not found: the user account entered is invalid.'
+readonly _ERR_VAR_NAME_='variable not found: identifier is invalid or does not exist.'
+readonly _ERR_FUNCTION_NOT_FOUND_='Function not found: the specified identifier is invalid or does not exist.'
+readonly _ERR_ARG_='invalid argument: the argument is not supported by the specified parameter.'
+readonly _ERR_RULE_ALREADY_EXISTS_='failed to set: rule name already exists.'
+readonly _ERR_HANDLE_EXISTS_='error when registering: there is already a handle linked to the callback'
+readonly _ERR_CONNECTION_='connection failure: it was not possible to establish a connection with Telegram.'
 
 # Maps
 declare -A _BOT_HANDLE_
@@ -417,7 +417,7 @@ MessageError()
 	esac
 
 	# Imprime erro
-	printf "%s: erro: linha %s: %s: %s: %s\n"					\
+	printf "%s: erro: line %s: %s: %s: %s\n"					\
 							"${_BOT_SCRIPT_}"					\
 							"${BASH_LINENO[$i]:--}" 			\
 							"${FUNCNAME[$i]:--}" 				\
@@ -509,8 +509,8 @@ _eof
 
 	[[ $? -eq 0 ]] && {	
 		
-		printf '%s foi criado com sucesso !!\n' $service	
-		echo -n "Habilitando..."
+		printf '%s was successfully created !!\n' $service	
+		echo -n "Enabling..."
  		systemctl enable $service &>/dev/null && echo -e $ok || \
 		{ echo -e $fail; MessageError API; }
 
@@ -5773,7 +5773,7 @@ _EOF
 		if [[ $_BOT_MONITOR_ ]]; then
 			printf -v bar '=%.s' {1..50}
 			printf "$bar\nData: %(%d/%m/%Y %T)T\n"
-			printf 'Script: %s\nBot (nome): %s\nBot (usuario): %s\nBot (id): %s\n' 	\
+			printf 'Script: %s\nBot (name): %s\nBot (user): %s\nBot (id): %s\n' 	\
 					"${_BOT_SCRIPT_}" 												\
 					"${_BOT_INFO_[2]}" 												\
 					"${_BOT_INFO_[3]}" 												\
@@ -5796,7 +5796,7 @@ _EOF
 			byref[$vet]+=${byref[$vet]:+$_BOT_DELM_}${val}
 
 			if [[ $_BOT_MONITOR_ ]]; then
-				[[ $vet -ne ${oldv:--1} ]] && printf "$bar\nMensagem: %d\n$bar\n" $((vet+1))
+				[[ $vet -ne ${oldv:--1} ]] && printf "$bar\nMessage: %d\n$bar\n" $((vet+1))
 				printf "[%s]: %s = '%s'\n" "$FUNCNAME" "$var" "$val"
 				oldv=$vet
 			fi
