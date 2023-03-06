@@ -61,7 +61,7 @@ while [[ $# > 0 ]];do
         ;;
         --zh)
         CHINESE=1
-        colorEcho ${BLUE} "安装中文版..\n"
+        colorEcho ${BLUE} "Install the English version..\n"
         ;;
         *)
                 # unknown option
@@ -235,10 +235,10 @@ installFinish() {
     if [[ ${INSTALL_WAY} == 0 ]]; then
         clear
 
-        echo -e "\n\033[1;32mV2RAY INSTALADO COM SUCESSO !\033[0m"
+        echo -e "\n\033[1;32mV2RAY INSTALLED SUCCESSFULLY !\033[0m"
         v2ray info
 
-        echo -e "Por favor insira o comando 'v2ray' para gerenciar v2ray\n"
+        echo -e "Please input 'v2ray' command to manage v2ray\n"
     fi
 }
 
